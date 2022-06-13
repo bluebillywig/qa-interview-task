@@ -1,0 +1,7 @@
+<div class="bb-dimension">
+	<input [placeholder]="placeholder" [style.width]="inputWidth" class="join-right"  [(ngModel)]="dimension" type="text" (ngModelChange)="onValueChange($event)" (keydown)="onKeydown($event)"/>
+	 <select *ngIf="units && units.length > 1" [(ngModel)]="dimensionUnit" (ngModelChange)="onDimensionUnitChange()">
+		<option *ngFor="let unit of units" [ngValue]="unit.value">{{ unit.label }}</option>
+	</select><!--
+	 --><div class="join-left no-select" *ngIf="units && units.length === 1">{{ units[0].label }}</div>
+</div>

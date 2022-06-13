@@ -1,0 +1,25 @@
+<div class="dimensions">
+	<h1>Player Dimensions</h1>
+	<hr>
+	<label>WIDTH</label>
+	<bb-dimension name="width" (ngModelChange)="dimensionChanged('width')" [(ngModel)]="width" [units]="dimensionUnits" ngDefaultControl></bb-dimension>
+	<br>
+	<br>
+	<label>HEIGHT</label>
+	<bb-dimension name="height" (ngModelChange)="dimensionChanged('height')" [(ngModel)]="height" [units]="dimensionUnits" ngDefaultControl></bb-dimension>
+
+	<div [hidden]="width.indexOf('%') !== -1 || height.indexOf('%') !== -1" class="aspect-container">
+		<label>
+			<input
+				type="checkbox"
+				[(ngModel)]="lockAspect"
+				(ngModelChange)="setAspectRatio()"
+				[ngModelOptions]="{standalone: true}"
+				[disabled]="width.indexOf('%') !== -1 || height.indexOf('%') !== -1"
+				class="avoid-positioning"
+			/>
+			LOCK ASPECT RATIO
+		</label>
+		&nbsp;<span [hidden]="!aspectRatio">({{ aspectRatio | number:'1.0-2'}})</span>
+	</div>
+</div>
